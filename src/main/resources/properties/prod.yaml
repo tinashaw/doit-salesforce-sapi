@@ -1,0 +1,14 @@
+api:
+#  host: "0.0.0.0"
+#  port: "8082"
+  host: "0.0.0.0"
+  port: "8081"
+  timeout: "40000"
+   
+salesforce:
+  token-endpoint: ""
+  audience-url: "https://test.salesforce.com"
+  system:
+    url: "https://doit-intl--stage.sandbox.my.salesforce.com"
+    username: "udit.khare+sandbox1@apisero.com"
+    authorization-url: "https://test.salesforce.com/services/Soap/u/55.0"

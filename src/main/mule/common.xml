@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="create-data-in-salesforce-flow" doc:id="817816e5-bbb7-4308-ab03-b399194f7990" >
+		<logger level="INFO" doc:name="Log Started" doc:id="4b364777-daed-467a-ac8f-081e901b5bc2" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Create - Salesforce flow&quot;,&#10;  status: &quot;Started&quot;,&#10;  timestamp : now()&#10;}]" />
+		<salesforce:create doc:name="Common Create" doc:id="8cc0f734-48f4-4d4c-b573-73905affd69c" config-ref="Salesforce_Config" type="#[vars.object]"/>
+		<ee:transform doc:name="Set Response Payload" doc:id="79d8f317-4e3c-408b-afa2-5c6c48ab1693" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Log Completed" doc:id="e994c9cd-3f1b-4062-9eb4-c4e2c3134a8c" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Create - Salesforce flow&quot;,&#10;  status: &quot;Completed&quot;,&#10;  timestamp : now()&#10;}]" />
+	</flow>
+	<flow name="query-data-from-salesforce-flow" doc:id="4227f384-13b3-46bc-afcb-078db13f2e45" >
+		<logger level="INFO" doc:name="Log Started" doc:id="c858a2e4-582f-4c90-ab76-674853d60ab1" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Query - Salesforce flow&quot;,&#10;  status: &quot;Started&quot;,&#10;  timestamp : now()&#10;}]" />
+		<salesforce:query doc:name="Common Query" doc:id="4fa5a610-7d9e-47f2-9e02-2ebf7b3c11de" config-ref="Salesforce_Config">
+			<salesforce:salesforce-query ><![CDATA[#[vars.querytobeexecuted]]]></salesforce:salesforce-query>
+		</salesforce:query>
+		<ee:transform doc:name="Set Response Payload" doc:id="08c0b038-1cff-4a82-ba13-62ce6b1ef9e2" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Log Completed" doc:id="e7f173e2-e46d-4b6b-9844-db7b1ea541d2" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Query - Salesforce flow&quot;,&#10;  status: &quot;Completed&quot;,&#10;  timestamp : now()&#10;}]" />
+	</flow>
+	<flow name="update-data-in-salesforce-flow" doc:id="6c24406d-078e-4303-beb1-c01a0a87f51b" >
+		<logger level="INFO" doc:name="Log Started" doc:id="99f903f5-ffab-4ede-92cb-2145ac3de6f8" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Update - Salesforce flow&quot;,&#10;  status: &quot;Started&quot;,&#10;  timestamp : now()&#10;}]" />
+		<salesforce:update doc:name="Common Update" doc:id="51e8e864-f383-4da0-b255-d0fc9368d936" config-ref="Salesforce_Config" type="#[vars.object]"/>
+		<ee:transform doc:name="Set Response Payload" doc:id="655a3e82-ae32-4a98-9868-9b8e2d911b8c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Log Completed" doc:id="6fe402e9-c6b1-400f-b01e-7ab2d0e62079" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Update - Salesforce flow&quot;,&#10;  status: &quot;Completed&quot;,&#10;  timestamp : now()&#10;}]" />
+	</flow>
+</mule>

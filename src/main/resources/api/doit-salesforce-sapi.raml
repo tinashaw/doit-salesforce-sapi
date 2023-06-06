@@ -1,0 +1,199 @@
+#%RAML 1.0
+title: doit-salesforce-sapi
+
+description: Salesforce System api
+version: v1
+
+protocols: [HTTP, HTTPS]
+
+mediaType: 
+  - application/json
+  
+documentation: 
+  - !include Documentation/documentation.raml
+  
+traits:
+  errorResponse: !include /Traits/errorResponseTrait.raml
+
+/user:
+  /email:
+    get:
+      is: [errorResponse]
+      description: get user info by email
+      displayName: Get User
+      queryParameters:
+        email:
+          displayName: User Email
+          type: string
+          required: true
+          example: "abc@apisero.com"
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+  /id:
+    get:
+      is: [errorResponse]
+      description: get user info by Id
+      displayName: Get User Info
+      queryParameters:
+        ownerId:
+          displayName: Owner Id
+          type: string
+          required: true
+          example: "373349952"
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+
+/contact:
+  /{id}:
+    get:
+      is: [errorResponse]
+      description: get a contact by salesforceid
+      displayName: Get Contact
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+      
+  /update:
+    post:
+      is: [errorResponse]
+      description: Update a contact by salesforceid
+      displayName: Update a contact
+      body:
+        application/json:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+
+  /create:
+    post:
+      is: [errorResponse]
+      description: Create a new Contact
+      displayName: Create a contact
+      body:
+        application/json:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+  
+/account:
+  /{id}:
+    get:
+      is: [errorResponse]
+      description: get a account by salesforceid
+      displayName: Get Account
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+  /update:
+    post:
+      is: [errorResponse]
+      description: Update a account by salesforceid
+      displayName: Update a Account
+      body:
+        application/json:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+
+  /create:
+    post:
+      is: [errorResponse]
+      description: Create a new Company
+      displayName: Create a company
+      body:
+        application/json:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+/opportunity:
+  /getRecordTypeName/{recordTypeId}:
+    get:
+      is: [errorResponse]
+      description: get record type name by recordTypeId
+      displayName: Get Record Type Name
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+    
+  /update:
+    post:
+      is: [errorResponse]
+      description: Update a Opportunity by salesforceid
+      displayName: Update a Opportunity
+      body:
+        application/json: 
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+    
+
+/lead:
+  /create:
+    post:
+      is: [errorResponse]
+      description: Create a new Lead
+      displayName: Create a Lead
+      body:
+        application/json:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+  /update:
+    post:
+      is: [errorResponse]
+      description: Update a lead by leadid
+      displayName: Update a Lead
+      body:
+        application/json:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+
+
+/task:
+/genericquery:
+  get:
+    description: Get generic query details.
+    queryParameters:
+      querytobeexecuted:
+        description: The query required for execution
+        type: string
+        required: true   
+    responses:
+      200:
+        body:
+          application/json:
+            

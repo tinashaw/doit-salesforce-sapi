@@ -1,0 +1,15 @@
+query:
+  user:
+    byemail: "SELECT Id FROM User WHERE FederationIdentifier = "
+    byid: "SELECT Name, FederationIdentifier FROM User WHERE Id = "
+  record-type:
+    byid : "SELECT Name FROM RecordType WHERE Id = "  
+  contact:
+    byid: "SELECT FIELDS(ALL) FROM Contact where Id = "
+  account:
+    byid: "Select FIELDS(ALL) from Account where Id = "
+    
+reconnection:
+  salesforce:
+    frequency: "2000"
+    attempt: "5"

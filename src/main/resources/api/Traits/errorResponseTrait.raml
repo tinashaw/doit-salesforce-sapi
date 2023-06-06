@@ -1,0 +1,75 @@
+#%RAML 1.0 Trait
+usage: Apply this trait to define common response codes returned by all API implementations.
+
+responses: 
+  400:
+    headers:
+        Content-Type:
+          example: "application/json;charset=UTF-8"
+    description: The server cannot or will not process the request due to something that is perceived to be a client error.
+    body:
+      application/json:
+        example: !include ../Examples/traits/400Responses.json
+
+  401:
+    headers:
+        Content-Type:
+          example: "application/json;charset=UTF-8"
+    description: No valid credentials found to access the requested resource.
+    body:
+      application/json:
+        example: !include ../Examples/traits/401Responses.json
+
+  404:
+    headers:
+        Content-Type:
+          example: "application/json;charset=UTF-8"
+    description: The server cannot find the requested resource.
+    body:
+      application/json:
+       example: !include ../Examples/traits/404Responses.json
+
+  405:
+    headers:
+        Content-Type:
+          example: "application/json;charset=UTF-8"
+    description: Request method is not supported by the target resource.
+    body:
+      application/json:
+       example: !include ../Examples/traits/405Responses.json
+
+  500:
+    headers:
+        Content-Type:
+          example: "application/json;charset=UTF-8"
+    description: An internal error occurred while processing the API request.
+    body:
+      application/json:
+        example: !include ../Examples/traits/500Responses.json
+
+
+  501:
+    headers:
+        Content-Type:
+          example: "application/json;charset=UTF-8"
+    description: The method has not been implemented.
+    body:
+      application/json:
+         example: !include ../Examples/traits/501Responses.json
+  502:
+    headers:
+        Content-Type:
+          example: "application/json;charset=UTF-8"
+    description: Bad Gateway
+    body:
+      application/json:
+        example: !include ../Examples/traits/502Responses.json
+
+  503:
+    headers:
+        Content-Type:
+          example: "application/json;charset=UTF-8"
+    description: Service Unavailable
+    body:
+      application/json:
+         example: !include ../Examples/traits/503Responses.json
