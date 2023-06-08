@@ -12,12 +12,10 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
 http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
 	<configuration-properties doc:name="Configuration properties" doc:id="d8aa39f9-bbb0-46ea-8198-5e575f944a09" file="properties/${mule.env}.yaml" />
-	<global-property doc:name="Global Property" doc:id="eedf119b-6db2-4540-8c30-aad37747bc09" name="mule.key" value="DoiT123" />
 	<http:listener-config name="doit-salesforce-sapi-httpListenerConfig">
         <http:listener-connection host="${api.host}" port="${api.port}" readTimeout="${api.timeout}" />
     </http:listener-config>
     <apikit:config name="doit-salesforce-sapi-config" api="doit-salesforce-sapi.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
-	<global-property doc:name="Global Property" doc:id="368c4c03-34f9-43e1-8641-695e79c4b4e9" name="mule.env" value="dev" />
 	<configuration-properties doc:name="Configuration properties" doc:id="ad944676-67b5-4388-a4b5-1936f3b289a1" file="properties/common.yaml" />
 	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="30d1c891-96bf-4f00-9590-071128f1b957" >
 		<salesforce:basic-connection username="${salesforce.system.username}" password="${secure::salesforce.system.password}" securityToken="${secure::salesforce.system.security-token}" url="${salesforce.system.authorization-url}" >
@@ -29,9 +27,6 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="503c7519-05bc-42f0-9c8d-d49da06406b6" file="properties/${mule.env}-secure.yaml" key="${mule.key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
-	<salesforce:sfdc-config name="Salesforce_Config1" doc:name="Salesforce Config" doc:id="65c46c78-5d3e-4eed-9fa1-3696e21fe319" >
-		<salesforce:basic-connection username="integration@doit-intl.com.stage" password="1ntEgrat!0n1" securityToken="eKs2eKYVxJx9wHXV18fBzRW" url="https://test.salesforce.com/services/Soap/u/55.0"/>
-	</salesforce:sfdc-config>
 	<error-handler name="global-error-handler" doc:id="805b71fe-bd55-4974-9d4d-b42ba5cfb663" >
 		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="737fcc3c-d901-4725-bcb2-d4e816e09139" type="APIKIT:BAD_REQUEST" >
 			<set-variable value="#[400]" doc:name="Set the HTTP Status - 40" doc:id="e19d70d4-3528-4cf7-af59-749b42eb4a4c" variableName="httpStatus" />
