@@ -184,6 +184,20 @@ traits:
 
 
 /task:
+  /create:
+    post:
+      is: [errorResponse]
+      description: Create a new Task
+      displayName: Create a Task
+      body:
+        application/json:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:  
+    
 /genericquery:
   get:
     description: Get generic query details.
