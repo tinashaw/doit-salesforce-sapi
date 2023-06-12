@@ -15,6 +15,9 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	<http:listener-config name="doit-salesforce-sapi-httpListenerConfig">
         <http:listener-connection host="${api.host}" port="${api.port}" readTimeout="${api.timeout}" />
     </http:listener-config>
+    <global-property doc:name="Global Property" doc:id="a3566fec-d135-41a4-9232-26db779a509a" name="mule.key" value="DoiT123" />
+	<global-property doc:name="Global Property" doc:id="9c671796-545a-477a-8089-ac2eabbe49d9" name="mule.env" value="dev" />
+	
     <apikit:config name="doit-salesforce-sapi-config" api="doit-salesforce-sapi.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
 	<configuration-properties doc:name="Configuration properties" doc:id="ad944676-67b5-4388-a4b5-1936f3b289a1" file="properties/common.yaml" />
 	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="30d1c891-96bf-4f00-9590-071128f1b957" >
@@ -27,6 +30,7 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="503c7519-05bc-42f0-9c8d-d49da06406b6" file="properties/${mule.env}-secure.yaml" key="${mule.key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
+	<configuration doc:name="Configuration" doc:id="4368a78a-e04c-413c-8ae9-56d12bc64a60" defaultErrorHandler-ref="global-error-handler" />
 	<error-handler name="global-error-handler" doc:id="805b71fe-bd55-4974-9d4d-b42ba5cfb663" >
 		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="737fcc3c-d901-4725-bcb2-d4e816e09139" type="APIKIT:BAD_REQUEST" >
 			<set-variable value="#[400]" doc:name="Set the HTTP Status - 40" doc:id="e19d70d4-3528-4cf7-af59-749b42eb4a4c" variableName="httpStatus" />
@@ -135,6 +139,6 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	</error-handler>
 	<sub-flow name="global-exception-response-sub-flow" doc:id="e791deb0-237d-46b8-ad5e-89fd6ca67a17" >
 		<set-payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;    "transactionId": correlationId,&#10;    "logLevel": "ERROR",&#10;    "errorCode": error.errorMessage.attributes.StatusCode default 500,&#10;    "errorTypes": error.errorType.namespace,&#10;    "process": app.name,&#10;    "Component": if(error.failingComponent != null) error.failingComponent else null,&#10;    "timestamp": now(),&#10;    "exception":  error.description,&#10;    "message": error.muleMessage.typedValue.message&#10;}]' doc:name="Final Error Response" doc:id="1c3e1275-065f-49c6-b7e2-8df86dcdb3f5" />
-		<logger level="INFO" doc:name="Logger" doc:id="780a903b-6f34-4e8e-876a-0a1708a9fcee" message="#[payload]" />
+		<logger level="ERROR" doc:name="Log Error" doc:id="780a903b-6f34-4e8e-876a-0a1708a9fcee" message="#[payload]" />
 	</sub-flow>
 </mule>
