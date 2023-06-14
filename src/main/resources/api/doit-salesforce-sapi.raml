@@ -187,8 +187,23 @@ traits:
   /create:
     post:
       is: [errorResponse]
-      description: Create a new Task
-      displayName: Create a Task
+      description: Create a new Contact
+      displayName: Create a contact
+      body:
+        application/java:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:  
+
+/campaign:
+  /create:
+    post:
+      is: [errorResponse]
+      description: Create a new Campaign Member
+      displayName: Create a Campaign Member
       body:
         application/json:
           example:
@@ -196,8 +211,21 @@ traits:
         200:
           body:
             application/json:
-              example:  
-    
+              example:
+  /update:
+    post:
+      is: [errorResponse]
+      description: Update a new Campaign Member
+      displayName: Update a Campaign Member
+      body:
+        application/json:
+          example:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+
 /genericquery:
   get:
     description: Get generic query details.

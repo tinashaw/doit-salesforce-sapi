@@ -18,7 +18,7 @@
         <ee:transform doc:id="d742e6aa-a910-421a-a024-f2925dbcadcf" doc:name="Set querytobeexecuted">
             <ee:message />
             <ee:variables>
-				<ee:set-variable resource="dwl/var-user-by-email.dwl" variableName="querytobeexecuted" />
+                <ee:set-variable resource="dwl/var-user-by-email.dwl" variableName="querytobeexecuted" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to query data from salesforce" doc:id="8186eac4-b941-4f26-be89-62c5b92e1133" name="query-data-from-salesforce-flow" />
@@ -29,7 +29,7 @@
         <ee:transform doc:name="Set querytobeexecuted" doc:id="69f830cf-7f0a-46b4-83e4-d8db4bf25000">
             <ee:message />
             <ee:variables>
-				<ee:set-variable resource="dwl/var-genericquery.dwl" variableName="querytobeexecuted" />
+                <ee:set-variable resource="dwl/var-genericquery.dwl" variableName="querytobeexecuted" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to query data from salesforce" doc:id="088718ef-38b4-4779-9e21-4908915a46d0" name="query-data-from-salesforce-flow" />
@@ -40,7 +40,7 @@
         <ee:transform doc:name="Set querytobeexecuted">
             <ee:variables>
                 <ee:set-variable variableName="recordTypeId"><![CDATA[attributes.uriParams.'recordTypeId']]></ee:set-variable>
-				<ee:set-variable resource="dwl/var-opportunity-get-record-type.dwl" variableName="querytobeexecuted" />
+                <ee:set-variable resource="dwl/var-opportunity-get-record-type.dwl" variableName="querytobeexecuted" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to query-data-from-salesforceFlow" doc:id="f98c6046-549f-4053-a4be-666bc3cef6f7" name="query-data-from-salesforce-flow" />
@@ -51,7 +51,7 @@
         <ee:transform doc:name="Set querytobeexecuted">
             <ee:message />
             <ee:variables>
-				<ee:set-variable resource="dwl/var-user-by-id.dwl" variableName="querytobeexecuted" />
+                <ee:set-variable resource="dwl/var-user-by-id.dwl" variableName="querytobeexecuted" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to query data from salesforce" doc:id="272d583e-f105-4c30-a71e-88152c03bb0d" name="query-data-from-salesforce-flow" />
@@ -62,7 +62,7 @@
         <ee:transform doc:name="Set querytobeexecuted">
             <ee:variables>
                 <ee:set-variable variableName="id"><![CDATA[attributes.uriParams.'id']]></ee:set-variable>
-				<ee:set-variable resource="dwl/var-account-by-id.dwl" variableName="querytobeexecuted" />
+                <ee:set-variable resource="dwl/var-account-by-id.dwl" variableName="querytobeexecuted" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to query data from salesforce" doc:id="3b259ef1-f9b1-48c5-a6b8-d2c5cb55edc0" name="query-data-from-salesforce-flow" />
@@ -74,7 +74,7 @@
             <ee:message />
             <ee:variables>
                 <ee:set-variable variableName="id"><![CDATA[attributes.uriParams.'id']]></ee:set-variable>
-				<ee:set-variable resource="dwl/var-contact-by-id.dwl" variableName="querytobeexecuted" />
+                <ee:set-variable resource="dwl/var-contact-by-id.dwl" variableName="querytobeexecuted" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to query data from salesforce" doc:id="ca4a1925-5504-4de8-8187-d76e511af341" name="query-data-from-salesforce-flow" />
@@ -84,10 +84,10 @@
         <logger level="INFO" doc:name="Log Started" doc:id="014a08a5-8449-4046-9def-f147a6a7a008" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Account flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-				<ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
-				<ee:set-variable resource="dwl/object/var-account.dwl" variableName="object" />
+                <ee:set-variable resource="dwl/object/var-account.dwl" variableName="object" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to create data in salesforce" doc:id="b16442ab-f91c-4a7f-aee4-b4e0e69b2f11" name="create-data-in-salesforce-flow" />
@@ -97,10 +97,10 @@
         <logger level="INFO" doc:name="Log Started" doc:id="bb29b808-e8bc-4c66-b9d3-70ca26d0d336" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Contact flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-				<ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
-				<ee:set-variable resource="dwl/object/var-contact.dwl" variableName="object" />
+                <ee:set-variable resource="dwl/object/var-contact.dwl" variableName="object" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to create data in salesforce" doc:id="a1e99a1b-cdc2-433b-a53c-8f4838d1c275" name="create-data-in-salesforce-flow" />
@@ -110,10 +110,10 @@
         <logger level="INFO" doc:name="Log Started" doc:id="5eea8355-c126-4e1e-a9d3-a8f4c494bf1d" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Update Account flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-				<ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
-				<ee:set-variable resource="dwl/object/var-account.dwl" variableName="object" />
+                <ee:set-variable resource="dwl/object/var-account.dwl" variableName="object" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to update data in salesforce" doc:id="9387643b-e5c3-4c84-b4b4-eae5d31f4453" name="update-data-in-salesforce-flow" />
@@ -123,10 +123,10 @@
         <logger level="INFO" doc:name="Log Started" doc:id="5c99f04e-1e79-4c08-b29e-c839a2bad675" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Update Contact flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-				<ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
-				<ee:set-variable resource="dwl/object/var-contact.dwl" variableName="object" />
+                <ee:set-variable resource="dwl/object/var-contact.dwl" variableName="object" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to update data in salesforce" doc:id="8ea71c2b-445d-4470-9079-31d8663261f6" name="update-data-in-salesforce-flow" />
@@ -136,10 +136,10 @@
         <logger level="INFO" doc:name="Log Started" doc:id="55f6e923-6aba-44e2-b92b-f231b1d191bd" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Update Opportunity flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name" doc:id="095b75b6-58b2-4b6d-9298-8a735f911fd5">
             <ee:message>
-				<ee:set-payload resource="dwl/common/msg-inbound-payload.dwl" />
+                <ee:set-payload resource="dwl/common/msg-inbound-payload.dwl" />
             </ee:message>
             <ee:variables>
-				<ee:set-variable resource="dwl/object/var-opportunity.dwl" variableName="object" />
+                <ee:set-variable resource="dwl/object/var-opportunity.dwl" variableName="object" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to update data in salesforce" doc:id="c3705889-abc4-4986-98b8-0d41e0d0cf9d" name="update-data-in-salesforce-flow" />
@@ -149,10 +149,10 @@
         <logger level="INFO" doc:name="Log Started" doc:id="75e6755d-d4c9-4a7b-9121-18c9bff81a07" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Lead flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-				<ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
-				<ee:set-variable resource="dwl/object/var-lead.dwl" variableName="object" />
+                <ee:set-variable resource="dwl/object/var-lead.dwl" variableName="object" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to create data in salesforce" doc:id="9a235f92-c39d-4d0e-a138-9c8c94702d14" name="create-data-in-salesforce-flow" />
@@ -162,10 +162,10 @@
         <logger level="INFO" doc:name="Log Started" doc:id="c02a05fb-e9bc-4f80-8fd1-40fef523517e" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Update Lead flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-				<ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
-				<ee:set-variable resource="dwl/object/var-lead.dwl" variableName="object" />
+                <ee:set-variable resource="dwl/object/var-lead.dwl" variableName="object" />
             </ee:variables>
         </ee:transform>
         <flow-ref doc:name="Flow Ref to update data in salesforce" doc:id="131a9c46-90a4-4257-987f-0e5687a7abeb" name="update-data-in-salesforce-flow" />
@@ -173,7 +173,7 @@
     </flow>
     <flow name="post:\task\create:application\json:doit-salesforce-sapi-config">
         <logger level="INFO" doc:name="Log Started" doc:id="7aeafb1a-5707-4a90-9a0c-153e6b9919a1" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Task flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
-		<ee:transform doc:name="Set object name" doc:id="3662c27a-9bb4-4dd8-8fd2-f326b6e1ba8a">
+        <ee:transform doc:name="Set object name" doc:id="3662c27a-9bb4-4dd8-8fd2-f326b6e1ba8a">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/java
@@ -193,7 +193,39 @@ output application/json
 "Task"]]></ee:set-variable>
             </ee:variables>
         </ee:transform>
-		<flow-ref doc:name="Flow Ref to create task  in salesforce " doc:id="f7ae8dd8-0af0-4d91-9ae5-7687db037825" name="create-data-in-salesforce-flow" />
-		<logger level="INFO" doc:name="Log Completed" doc:id="49fecbd9-4981-4cf2-a87d-005d03fee5de" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Task flow&quot;,&#xA;  status: &quot;Completed&quot;,&#xA;  timestamp : now()&#xA;}]" />
+        <flow-ref doc:name="Flow Ref to create task  in salesforce " doc:id="f7ae8dd8-0af0-4d91-9ae5-7687db037825" name="create-data-in-salesforce-flow" />
+        <logger level="INFO" doc:name="Log Completed" doc:id="49fecbd9-4981-4cf2-a87d-005d03fee5de" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Task flow&quot;,&#xA;  status: &quot;Completed&quot;,&#xA;  timestamp : now()&#xA;}]" />
+    </flow>
+    <flow name="post:\campaign\create:application\json:doit-salesforce-sapi-config">
+		<logger level="INFO" doc:name="Log Started" doc:id="3345daad-dc96-4d2c-93b6-eb1a3945e925" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Create Campaign Member flow&quot;,&#10;  status: &quot;Started&quot;,&#10;  timestamp : now()&#10;}]" />
+		<ee:transform doc:name="Set object name" doc:id="9dbc3a35-0c67-4623-b0e7-a2cba9c49ea1" >
+			<ee:message >
+				<ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="object" ><![CDATA[%dw 2.0
+output application/json
+---
+"CampaignMember"]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<flow-ref doc:name="Flow Ref to create data in salesforce" doc:id="0d48a681-f234-4fa7-afc4-9b9293d59cb7" name="create-data-in-salesforce-flow" />
+		<logger level="INFO" doc:name="Log Completed" doc:id="ae9eec79-c95f-4175-a1a8-a93632f21060" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Create Campaign Member flow&quot;,&#10;  status: &quot;Completed&quot;,&#10;  timestamp : now()&#10;}]" />
+    </flow>
+    <flow name="post:\campaign\update:application\json:doit-salesforce-sapi-config">
+		<logger level="INFO" doc:name="Log Started" doc:id="c538ff88-5b80-4a1f-b2b4-4f98b46061e0" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Update Campaign Member flow&quot;,&#10;  status: &quot;Started&quot;,&#10;  timestamp : now()&#10;}]" />
+		<ee:transform doc:name="Set object name" doc:id="4d7766a1-6b1e-4d5f-ac91-8a4c8df5ded8" >
+			<ee:message >
+				<ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="object" ><![CDATA[%dw 2.0
+output application/json
+---
+"CampaignMember"]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<flow-ref doc:name="Flow Ref to create data in salesforce" doc:id="34d961b5-024b-4598-8e6a-5b5d54f9c53c" name="create-data-in-salesforce-flow" />
+		<logger level="INFO" doc:name="Log Completed" doc:id="b292a441-964e-4b4a-8a96-56b15764349c" message="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;  env : Mule::p('env'),&#10;  transactionId : correlationId,&#10;  applicationName : Mule::p('app.name'),&#10;  flowName : &quot;Update Campaign Member flow&quot;,&#10;  status: &quot;Completed&quot;,&#10;  timestamp : now()&#10;}]" />
     </flow>
 </mule>
