@@ -5,6 +5,6 @@ fun dateCheck(data)
 ---
 payload map(
    $ mapObject((v,k,idx) ->
-   (k): dateCheck(v)
+   if((k) ~= 'NumberOfEmployees')"NumberOfEmployees": v as Number else ((k): dateCheck(v))
     )
 )
