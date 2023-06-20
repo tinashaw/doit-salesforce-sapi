@@ -84,7 +84,7 @@
         <logger level="INFO" doc:name="Log Started" doc:id="014a08a5-8449-4046-9def-f147a6a7a008" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Account flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+				<ee:set-payload resource="dwl/common/msg-account-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
                 <ee:set-variable resource="dwl/object/var-account.dwl" variableName="object" />
@@ -97,7 +97,7 @@
         <logger level="INFO" doc:name="Log Started" doc:id="bb29b808-e8bc-4c66-b9d3-70ca26d0d336" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Contact flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+				<ee:set-payload resource="dwl/common/msg-contact-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
                 <ee:set-variable resource="dwl/object/var-contact.dwl" variableName="object" />
@@ -110,7 +110,7 @@
         <logger level="INFO" doc:name="Log Started" doc:id="5eea8355-c126-4e1e-a9d3-a8f4c494bf1d" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Update Account flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+				<ee:set-payload resource="dwl/common/msg-account-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
                 <ee:set-variable resource="dwl/object/var-account.dwl" variableName="object" />
@@ -123,7 +123,7 @@
         <logger level="INFO" doc:name="Log Started" doc:id="5c99f04e-1e79-4c08-b29e-c839a2bad675" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Update Contact flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+				<ee:set-payload resource="dwl/common/msg-contact-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
                 <ee:set-variable resource="dwl/object/var-contact.dwl" variableName="object" />
@@ -149,7 +149,7 @@
         <logger level="INFO" doc:name="Log Started" doc:id="75e6755d-d4c9-4a7b-9121-18c9bff81a07" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Create Lead flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+				<ee:set-payload resource="dwl/common/msg-lead-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
                 <ee:set-variable resource="dwl/object/var-lead.dwl" variableName="object" />
@@ -162,7 +162,7 @@
         <logger level="INFO" doc:name="Log Started" doc:id="c02a05fb-e9bc-4f80-8fd1-40fef523517e" message="#[%dw 2.0&#xA;output application/json&#xA;---&#xA;{&#xA;  env : Mule::p('env'),&#xA;  transactionId : correlationId,&#xA;  applicationName : Mule::p('app.name'),&#xA;  flowName : &quot;Update Lead flow&quot;,&#xA;  status: &quot;Started&quot;,&#xA;  timestamp : now()&#xA;}]" />
         <ee:transform doc:name="Set object name">
             <ee:message>
-                <ee:set-payload resource="dwl/common/msg-datacheck-mapping.dwl" />
+				<ee:set-payload resource="dwl/common/msg-lead-datacheck-mapping.dwl" />
             </ee:message>
             <ee:variables>
                 <ee:set-variable resource="dwl/object/var-lead.dwl" variableName="object" />
