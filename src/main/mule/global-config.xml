@@ -30,6 +30,8 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="503c7519-05bc-42f0-9c8d-d49da06406b6" file="properties/${mule.env}-secure.yaml" key="${mule.key}" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
+	<global-property doc:name="Global Property" doc:id="56247408-add4-4c11-a7cc-212eaaa8294d" name="mule.key" value="DoiT123" />
+	<global-property doc:name="Global Property" doc:id="70a910c6-f791-4ea9-83ea-e0ec98d63113" name="mule.env" value="dev" />
 	<configuration doc:name="Configuration" doc:id="4368a78a-e04c-413c-8ae9-56d12bc64a60" defaultErrorHandler-ref="global-error-handler" />
 	<error-handler name="global-error-handler" doc:id="805b71fe-bd55-4974-9d4d-b42ba5cfb663" >
 		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="737fcc3c-d901-4725-bcb2-d4e816e09139" type="APIKIT:BAD_REQUEST" >

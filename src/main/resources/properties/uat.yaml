@@ -14,5 +14,5 @@ salesforce:
   audience-url: "https://test.salesforce.com"
   system:
     url: "https://doit-intl--stage.sandbox.my.salesforce.com"
-    username: "udit.khare+sandbox1@apisero.com"
+    username: "integration@doit-intl.com.doit.stage"
     authorization-url: "https://test.salesforce.com/services/Soap/u/55.0"
