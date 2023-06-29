@@ -67,6 +67,13 @@
 			<version>1.2.5</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
+		<dependency>
+			<groupId>2ba40b72-4211-4443-b6c5-c9c67e99f9fa</groupId>
+			<artifactId>doit-salesforce-sapi-raml</artifactId>
+			<version>1.0.0</version>
+			<classifier>raml</classifier>
+			<type>zip</type>
+		</dependency>
 	</dependencies>
 
 	<repositories>

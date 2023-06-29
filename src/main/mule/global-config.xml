@@ -15,7 +15,8 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	<http:listener-config name="doit-salesforce-sapi-httpListenerConfig">
         <http:listener-connection host="${api.host}" port="${api.port}" readTimeout="${api.timeout}" />
     </http:listener-config>
-	
+	<global-property doc:name="Global Property" doc:id="954cbd19-922b-4c18-ba41-6b2dc9bf15dc" name="mule.env" value="dev" />
+	<global-property doc:name="Global Property" doc:id="18390fb2-e5eb-4352-a54a-aa43188552ae" name="mule.key" value="DoiT123" />
     <apikit:config name="doit-salesforce-sapi-config" api="doit-salesforce-sapi.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
 	<configuration-properties doc:name="Configuration properties" doc:id="ad944676-67b5-4388-a4b5-1936f3b289a1" file="properties/common.yaml" />
 	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="30d1c891-96bf-4f00-9590-071128f1b957" >
