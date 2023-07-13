@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="global-config-test-suite.xml" />
+	<munit:test name="global-test-suite-apikit-bad-request" doc:id="117fa8c5-0d16-4187-a5f4-a929fca4a9d3" description="Test" expectedErrorType="APIKIT:BAD_REQUEST" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="94e301a1-04be-4a37-9fd1-6f5ffef9f81d" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="e7644213-ad0b-4e17-b4fa-2e32cbd1b614" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="e537e1fb-193d-4ba0-9bc0-800cb41484aa" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-apikit-method-not-allowed" doc:id="de58e792-b80c-4430-8131-434a801a63f5" description="Test" expectedErrorType="APIKIT:METHOD_NOT_ALLOWED" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="504be970-2802-4abd-94a8-5f901001fa03" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:METHOD_NOT_ALLOWED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="77166b8b-d811-4ad2-bae9-a2606c7ec72f" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="ab13d063-1d63-4376-b3cc-635b1fc14849" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-apikit-method-not-acceptable" doc:id="13b2c0c3-08f7-4b1f-a541-df4f7e224acc" description="Test" expectedErrorType="APIKIT:NOT_ACCEPTABLE" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="90dd1db9-8ae1-4a50-a20d-4bb3a95137a5" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_ACCEPTABLE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="b55789de-4636-4df2-a8f4-a840fd891619" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="8d0b9b62-1fbc-489c-ae05-65133c52749e" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-apikit-method-not-found" doc:id="96a429d9-1313-4463-902e-29e17aa6915d" description="Test" expectedErrorType="APIKIT:NOT_FOUND" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="3bf6941e-8e28-41c5-896f-2417530ac945" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="4cf99da3-6b4e-4fe6-a544-677695422294" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="15e87fef-70ab-444f-a30d-6a7c208a5a72" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-apikit-unsupported-media-type" doc:id="79e2cee9-0850-4598-ac71-a962eb719b23" description="Test" expectedErrorType="APIKIT:UNSUPPORTED_MEDIA_TYPE" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="8f7af9e7-cdb6-41fc-82d8-b1da6f40f5ff" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:UNSUPPORTED_MEDIA_TYPE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="d8986376-6f82-4d80-a059-7f4f977a76fb" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="de1868dd-efdb-415f-82ea-3cb722b43774" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-bad-request" doc:id="305b0998-a80a-493c-9247-17835849c41e" description="Test" expectedErrorType="HTTP:BAD_REQUEST" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="d2f9e835-df72-405a-aa4c-d28a05649911" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="9c20a784-d427-4213-935e-8201a0ce8fc8" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="db7e0db1-b508-43dc-870d-ce2c5f42186f" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-connectivity" doc:id="9661d416-f7d0-4079-8c98-c3796dd1a74e" description="Test" expectedErrorType="HTTP:CONNECTIVITY" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="e0c97d43-e91a-4f5a-86d0-c1ec0e3b5ecb" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:CONNECTIVITY" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="b4a38632-44ac-440a-aa05-180b8975af67" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="f27a4a06-b550-4799-89b4-5d22fcee3d83" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-forbidden" doc:id="3bde6224-8399-4a7d-bcdc-70b3bf063801" description="Test" expectedErrorType="HTTP:FORBIDDEN" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="93ac7ce7-57d8-4e81-83e6-ca27d380b0fe" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:FORBIDDEN" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="d1969600-afa5-4720-a18f-4f912afaec76" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="0bb70742-1904-4f15-9761-fa07221aeb3b" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-internal-server-error" doc:id="7b651e24-ae97-40e2-8616-9de228fa3039" description="Test" expectedErrorType="HTTP:INTERNAL_SERVER_ERROR" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="14cf4c62-b2c9-4f0d-890e-8fba1e0ae602" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:INTERNAL_SERVER_ERROR" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="5a05b958-3167-4c28-8212-264ba5a361f8" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="9a284c7b-f374-4163-8269-bc124a2431c5" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-method-not-allowed" doc:id="a7b96fc5-2f4a-47f5-8431-d4f451233635" description="Test" expectedErrorType="HTTP:METHOD_NOT_ALLOWED" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="5edef3f6-b012-4473-b98c-6973ebee8f04" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:METHOD_NOT_ALLOWED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="36b7380f-5aee-4392-bc24-a2f8b418f1f0" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="ddff42e7-19d0-49c9-a796-f0d22e88f3cf" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-not-acceptable" doc:id="1040ec12-4713-46f2-9e84-c35e1fe9f25b" description="Test" expectedErrorType="HTTP:NOT_ACCEPTABLE" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="b3d17c32-1920-4796-aabf-e292aef2aa5d" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:NOT_ACCEPTABLE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="09c6f00e-6d56-45a9-8631-f5a63705aada" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="dc4ab387-8449-4ab0-9727-e3c7dc6a4eeb" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-retry-exhausted" doc:id="4879f7de-267e-4d80-9934-7e6402202b2a" description="Test" expectedErrorType="HTTP:RETRY_EXHAUSTED" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="bdc8bbdd-560d-4abc-b6ec-d90ab3716389" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:RETRY_EXHAUSTED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="d53952df-e35d-4419-8afe-ae489839e979" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="e891ab58-5cb5-4785-bcc4-d89b241e502e" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-unauthorized" doc:id="68b58c1c-cee7-4964-8109-0fe05b758033" description="Test" expectedErrorType="HTTP:UNAUTHORIZED" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="70021cd9-c4e7-4f41-9dff-c500fa9c610e" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:UNAUTHORIZED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="bee4e601-92d0-4a86-9a54-9fe447ca1e0c" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="eb507592-c7ef-4bd6-86d6-2707f1fe21ff" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-unsupported-media-type" doc:id="3dd890a7-c0b4-4846-8360-350f67907cf9" description="Test" expectedErrorType="HTTP:UNSUPPORTED_MEDIA_TYPE" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="5f4f7939-95ec-4092-a2b4-aa25c675b1ad" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:UNSUPPORTED_MEDIA_TYPE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="cff27d11-90ff-4195-a508-ecedd18da4da" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="ce1b7f64-72b2-4017-9608-de6a2e8170b1" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-stream-maximum-size-exceeded" doc:id="d82de090-5309-40d4-9b6d-7f5226eb9609" description="Test" expectedErrorType="STREAM_MAXIMUM_SIZE_EXCEEDED" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="73212258-7f39-4096-a5be-93fc501f7a45" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="STREAM_MAXIMUM_SIZE_EXCEEDED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="d6565675-be67-4a2a-ab84-12683f59fa64" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="c1a6faaf-6dc7-4509-9a11-fd2fd009c199" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-retry-exhausted" doc:id="4925b040-040a-48f3-b711-aaa85b093105" description="Test" expectedErrorType="RETRY_EXHAUSTED" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="85a2abe3-449e-43ff-ba52-37e3ebf0f7be" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="RETRY_EXHAUSTED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="4dc7c9c6-5729-491b-b736-930e208d34d6" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="cc0892a7-8976-4c72-be48-2b2159dea24b" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-redelivery-exhausted" doc:id="ee92c430-d7c8-4029-a3bf-24cdb6c0a09b" description="Test" expectedErrorType="REDELIVERY_EXHAUSTED" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="100b1578-bbbc-4724-a722-5daffe551f58" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="REDELIVERY_EXHAUSTED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="31edbf38-3ae1-4c5c-8b93-54f0964c35db" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="b654b1d6-c7f3-4ef6-a801-4369aeaa726b" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-connectivity" doc:id="0a1e88bb-0235-4de9-bc72-ba60ca271265" description="Test" expectedErrorType="CONNECTIVITY" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="ec6609be-d537-4025-8e9a-fe5e9a5460be" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="CONNECTIVITY" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="ef139582-5a12-4412-9a3e-a1f17f0ebe92" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="8bdbb0c9-e737-438c-a844-f85fc5588d20" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-timeout" doc:id="a1f6bf74-f6af-4ebc-9bd7-fb62d4cda0be" description="Test" expectedErrorType="TIMEOUT" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="9490ae82-10e0-4055-b688-2412d99d0f2c" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="TIMEOUT" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="38ff9940-2c7c-4798-b9e6-98df91a8ad80" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="7ea5b391-b271-4416-b893-a69420468e6e" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-transformation" doc:id="86daca57-f437-476f-92fc-c5db5d0092a4" description="Test" expectedErrorType="TRANSFORMATION" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="42ccca6f-0b6b-429c-85b0-67196caa9d0a" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="TRANSFORMATION" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="4bc6eb32-376b-489c-8121-47e82fc721e9" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="52852adf-8190-4214-8693-c3c06134028d" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-expression" doc:id="27d906c6-ae12-4eb0-b201-e81504aeff8e" description="Test" expectedErrorType="EXPRESSION" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="659a9086-70e4-4bca-85e6-5cb1f624f2b7" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="EXPRESSION" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="4d6137f2-877c-40aa-8ec2-277d82fa8d3f" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="141f5c01-e389-4733-be2f-1a7b96bac7b3" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-routing" doc:id="6626ffbb-fc76-4dad-be7f-08cdaa256dc2" description="Test" expectedErrorType="ROUTING" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="68745c36-624b-4ad6-8177-3787c80fef98" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="ROUTING" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="789faa74-3ebd-4ebc-8eea-ff8a2b0b349c" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="163d7950-4a0a-4309-9e2b-0bdc14f9faca" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-security" doc:id="acae9af7-36e7-4d6b-96bb-ff35c3482e10" description="Test" expectedErrorType="SECURITY" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="8f561fb6-2315-4462-8823-6491d517ae9a" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="SECURITY" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="d9f9c135-bf57-4dc3-af49-0721a46b348d" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="d8f91b4e-39b5-431c-b5f4-d1fa5192c5df" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-http-not-found" doc:id="bae74542-8141-46d3-8f7c-f9e533483a85" description="Test" expectedErrorType="HTTP:NOT_FOUND" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="b8dfb195-f9ce-40c5-9903-81361038889b" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="a8951944-f981-4571-8707-f8df602a2514" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="cabfc7ec-1291-4d3b-a511-3bccec0f3135" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-apikit-not-implemented" doc:id="7194b4c5-1eb4-4286-8e4f-22bcf138216b" description="Test" expectedErrorType="APIKIT:NOT_IMPLEMENTED" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="bd291821-6811-4fc7-a311-ad3924c386a6" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_IMPLEMENTED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="417ba262-f5ea-48b5-9cb4-1d6acdd51c5c" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="44d4d794-f136-4e22-8faf-2fc2461a3007" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="global-test-suite-any" doc:id="eaee1ad1-9055-45cc-afa4-3eb38c95a745" description="Test" expectedErrorType="ANY" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="ecb83416-3b67-49ba-97bc-647bd6f07c21" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="ANY" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="022bb316-4e20-4fd3-b09d-12b366a240ca" name="doit-salesforce-sapi-main" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="dd2c56a2-0231-457c-a802-f5c84db525d2" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

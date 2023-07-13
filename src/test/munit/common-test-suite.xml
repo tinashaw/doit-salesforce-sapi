@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="common-test-suite.xml" />
+	<munit:test name="common-test-suite-create-data-in-salesforce-flowTest" doc:id="446c230a-ff92-4619-9cbe-6028b7d58c40" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Common Create" doc:id="8b85013f-f3b9-4fce-a37c-c6a51f5dd51f" processor="salesforce:create">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="8cc0f734-48f4-4d4c-b573-73905affd69c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"Name" : "demo",&#10;	"NumberOfEmployees" : 50,&#10;	"Company_Domain__c" : "demo.com"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="974b6dae-e9fa-468b-ac68-7ca1991f1d11" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"Name" : "demo",&#10;	"NumberOfEmployees" : 50,&#10;	"Company_Domain__c" : "demo.com"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to create-data-in-salesforce-flow" doc:id="03e9963f-2156-41f1-b2b1-39d70cf33b66" name="create-data-in-salesforce-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Common Create" doc:id="902295f0-5e45-45f4-8da2-090c18cb3bc6" processor="salesforce:create">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="8cc0f734-48f4-4d4c-b573-73905affd69c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="common-test-suite-update-data-in-salesforce-flowTest" doc:id="a7fbf8d1-f84a-40bd-98d6-9a15152cd8ad" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Common Update" doc:id="cf021a70-e150-48ea-b851-81923d9a1249" processor="salesforce:update" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="51e8e864-f383-4da0-b255-d0fc9368d936" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"Name" : "demo",&#10;	"NumberOfEmployees" : 50,&#10;	"Company_Domain__c" : "demo.com",&#10;	"Id" : "0017600000XtUUlAAN"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value='#[{&#10;  "uriParams": {&#10;    "id": "0038c00002mfamLAAQ"&#10;  }&#10;}]' mediaType="application/java" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="254faac9-0aa2-456a-8a50-062949b55f1a" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"Name" : "demo",&#10;	"NumberOfEmployees" : 50,&#10;	"Company_Domain__c" : "demo.com",&#10;	"Id" : "0017600000XtUUlAAN"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to update-data-in-salesforce-flow" doc:id="7fcd6bf9-c8c9-4285-8b8d-f54b53d77431" name="update-data-in-salesforce-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Common Update" doc:id="9d095d6c-5997-4888-9fd2-aa344e605430" processor="salesforce:update" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="51e8e864-f383-4da0-b255-d0fc9368d936" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

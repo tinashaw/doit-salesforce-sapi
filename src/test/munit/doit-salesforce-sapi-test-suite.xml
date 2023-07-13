@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="doit-salesforce-sapi-test-suite.xml" />
+	<munit:test name="doit-salesforce-sapi-test-suite-get:\user\email:doit-salesforce-sapi-configTest" doc:id="4cfb2e03-a7e8-45f6-a405-95fef01e232f" description="Test">
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="6eba5a48-8022-41de-8109-027a9bee92a0">
+				<munit:attributes value='#[{&#10;  "queryParams": {&#10;    "email": "justin.carter@doit-intl.com"&#10;  }&#10;}]' encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\user\email:doit-salesforce-sapi-config" doc:id="a1819355-dba6-4f1f-ae97-c9b59ef53011" name="get:\user\email:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to query-data-from-salesforceFlow" doc:id="ddd3c320-576e-4217-b54e-d2ed73568ffa" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="8186eac4-b941-4f26-be89-62c5b92e1133" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-get:\genericquery:doit-salesforce-sapi-configTest" doc:id="759095c2-d765-4bbd-abd2-c0fbfbec777d" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to query-data-from-salesforceFlow" doc:id="9f1b2841-83be-487a-877c-fd23a3c58fbe" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="088718ef-38b4-4779-9e21-4908915a46d0" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:attributes value="#[{&#10;  &quot;queryParams&quot;: {&#10;    &quot;querytobeexecuted&quot;: &quot;SELECT AccountId,Email,LastActivityDate FROM Contact WHERE Id = '0037600000RcDXDAA3'&quot;&#10;  }&#10;}]" mediaType="application/java" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="c5de9b30-8e12-4c19-997e-71df59c5cace" >
+				<munit:attributes value="#[{&#10;  &quot;queryParams&quot;: {&#10;    &quot;querytobeexecuted&quot;: &quot;SELECT AccountId,Email,LastActivityDate FROM Contact WHERE Id = '0037600000RcDXDAA3'&quot;&#10;  }&#10;}]" encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\genericquery:doit-salesforce-sapi-config" doc:id="336d8d3d-7129-4452-85c9-2c234b93dac4" name="get:\genericquery:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to query-data-from-salesforceFlow" doc:id="a4c359b7-b855-42ba-83d1-d4d5eb6076a4" processor="flow-ref" atLeast="#[1]">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="088718ef-38b4-4779-9e21-4908915a46d0" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-get:\opportunity\getRecordTypeName\(recordTypeId):doit-salesforce-sapi-configTest" doc:id="c6da8133-5c51-46bb-8d90-296218f3a4dd" description="Test">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to query-data-from-salesforceFlow" doc:id="4f7b04a0-1a8b-47ca-b90f-b8c69e5d4c4c" processor="flow-ref">
+				<munit-tools:with-attributes>
+					<munit-tools:with-attribute whereValue="f98c6046-549f-4053-a4be-666bc3cef6f7" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return>
+					<munit-tools:attributes value='#[{&#10;  "uriParams": {&#10;    "recordTypeId": "0128c000001JbNqAAK"&#10;  }&#10;}]' mediaType="application/java" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="f44f7644-5600-4e85-9fda-6bc311d15f48">
+				<munit:attributes value='#[{&#10;  "uriParams": {&#10;    "recordTypeId": "0128c000001JbNqAAK"&#10;  }&#10;}]' encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution>
+			<flow-ref doc:name="Flow-ref to get:\opportunity\getRecordTypeName\(recordTypeId):doit-salesforce-sapi-config" doc:id="7b64ba52-4ad5-48cf-89ab-025b26a216ab" name="get:\opportunity\getRecordTypeName\(recordTypeId):doit-salesforce-sapi-config" />
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to query-data-from-salesforceFlow" doc:id="b051bae8-121c-4709-a5b4-ccd385e6cfea" processor="flow-ref" atLeast="#[1]">
+				<munit-tools:with-attributes>
+					<munit-tools:with-attribute whereValue="f98c6046-549f-4053-a4be-666bc3cef6f7" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-get:\user\id:doit-salesforce-sapi-configTest" doc:id="e2368360-cf7d-423f-a233-3c87e8e41807" description="Test">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to query-data-from-salesforceFlow" doc:id="8235edef-806c-4ce4-aee4-06a2d5d6d4af" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="272d583e-f105-4c30-a71e-88152c03bb0d" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:attributes value='#[{&#10;  "queryParams": {&#10;    "ownerId": "0128c000001JbNqAAK"&#10;  }&#10;}]' mediaType="application/java" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="60963321-0c3c-4f8d-9919-c3bd219e758c" >
+				<munit:attributes value='#[{&#10;  "queryParams": {&#10;    "ownerId": "0128c000001JbNqAAK"&#10;  }&#10;}]' encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution>
+			<flow-ref doc:name="Flow-ref to get:\user\id:doit-salesforce-sapi-config" doc:id="53d97d22-83db-4130-9c09-57473882169f" name="get:\user\id:doit-salesforce-sapi-config" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to query-data-from-salesforceFlow" doc:id="254f828a-082e-4267-ab19-11d2e48a53fa" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="272d583e-f105-4c30-a71e-88152c03bb0d" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-get:\account\(id):doit-salesforce-sapi-configTest" doc:id="1ff93108-fb96-439e-b998-fcf0cb95acbf" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to query-data-from-salesforceFlow" doc:id="642b9008-2914-470c-b780-77e723c49928" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="3b259ef1-f9b1-48c5-a6b8-d2c5cb55edc0" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:attributes value='#[{&#10;  "uriParams": {&#10;    "id": "0017600000XtUUlAAN"&#10;  }&#10;}]' mediaType="application/java" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="831e70ff-b222-445e-9bfe-71e33eac9f4a">
+				<munit:attributes value='#[{&#10;  "uriParams": {&#10;    "id": "0017600000XtUUlAAN"&#10;  }&#10;}]' encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\account\(id):doit-salesforce-sapi-config" doc:id="53d51860-9623-4edc-9ef6-0d1868718c2c" name="get:\account\(id):doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to query-data-from-salesforceFlow" doc:id="1cd16bf3-d5ee-4ea2-a29c-5a42d0ffe2e9" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="3b259ef1-f9b1-48c5-a6b8-d2c5cb55edc0" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-get:\contact\(id):doit-salesforce-sapi-configTest" doc:id="453e5b5d-5fba-48a9-bd4d-758e980e0a37" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to query-data-from-salesforceFlow" doc:id="8a1fac9a-9315-47ac-bd47-796306f8a6dd" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="ca4a1925-5504-4de8-8187-d76e511af341" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:attributes value='#[{&#10;  "uriParams": {&#10;    "id": "0038c00002mfamLAAQ"&#10;  }&#10;}]' mediaType="application/java" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="e1ce3885-d28e-428f-b85e-2021363bd217" >
+				<munit:attributes value='#[{&#10;  "uriParams": {&#10;    "id": "0038c00002mfamLAAQ"&#10;  }&#10;}]' encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\contact\(id):doit-salesforce-sapi-config" doc:id="f84ad8a3-7d4c-4fe5-a63e-9c12652a0f80" name="get:\contact\(id):doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to query-data-from-salesforceFlow" doc:id="8c71052b-2a68-4e57-aca2-d3129d16d08c" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="ca4a1925-5504-4de8-8187-d76e511af341" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\account\create:application\json:doit-salesforce-sapi-configTest" doc:id="93591c77-0684-4c93-a59c-355c6dac77bc" description="Test">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to create data in salesforce" doc:id="6b69cb87-b5e6-462f-a5d2-b5a370b04b1d" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="b16442ab-f91c-4a7f-aee4-b4e0e69b2f11" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"Name" : "demo",&#10;	"NumberOfEmployees" : 50,&#10;	"Company_Domain__c" : "demo.com"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="c3e79f62-233d-4bbb-a72d-37f52b48c669">
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"Name" : "demo",&#10;	"NumberOfEmployees" : 50,&#10;	"Company_Domain__c" : "demo.com"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\account\create:application\json:doit-salesforce-sapi-config" doc:id="64b3a688-e748-420c-8a8d-fa5df8cdd6db" name="post:\account\create:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to create data in salesforce" doc:id="101a4177-b03d-42a3-be81-44e7f0f64dc2" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="b16442ab-f91c-4a7f-aee4-b4e0e69b2f11" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\contact\create:application\json:doit-salesforce-sapi-configTest" doc:id="8419a1bb-2f6d-4600-9936-7abc70c8fd96" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to create data in salesforce" doc:id="9941421a-28e9-41bd-ae38-9bbf4808cf72" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="a1e99a1b-cdc2-433b-a53c-8f4838d1c275" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="839214d2-2d73-455d-be9e-c7f3ebd7df49">
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\contact\create:application\json:doit-salesforce-sapi-config" doc:id="77808b8e-dcfa-4f3e-93a8-8ad6b74ddd24" name="post:\contact\create:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to create data in salesforce" doc:id="30722ab9-30d2-47c1-9a05-ea064029d85a" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="a1e99a1b-cdc2-433b-a53c-8f4838d1c275" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\lead\create:application\json:doit-salesforce-sapi-configTest" doc:id="9acc82bc-ef4c-44e5-a7de-6fab319b7c67" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to create data in salesforce" doc:id="f62e74d2-5093-4c09-8664-53ab43ebb564" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="9a235f92-c39d-4d0e-a138-9c8c94702d14" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="2bd1da98-b6b3-4c0d-babe-5a1c2f0b14d1" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\lead\create:application\json:doit-salesforce-sapi-config" doc:id="7387d4cc-5269-4e69-a8eb-55b9fe658b5e" name="post:\lead\create:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to create data in salesforce" doc:id="bcd2130d-b30b-4910-bca3-4207c142c2ce" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="9a235f92-c39d-4d0e-a138-9c8c94702d14" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\task\create:application\json:doit-salesforce-sapi-configTest" doc:id="1662d9a0-18e0-4cb3-8576-9d8ccf1ab2d3" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to create data in salesforce" doc:id="938a0a1a-3324-40bf-b19b-50eedd150fa7" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="f7ae8dd8-0af0-4d91-9ae5-7687db037825" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{	"Subject" : "demo form",&#10;	"Type" : "Hubspot Form Fill",&#10;	"RecordTypeId" : "01276000000CrWY",&#10;	"Description" : "demo description",&#10;	"Status" : "Completed",&#10;	"WhatId" : "0038c00002mfamLAAQ"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="ca003401-09b6-437c-9dbd-10a0900f0077" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{	"Subject" : "demo form",&#10;	"Type" : "Hubspot Form Fill",&#10;	"RecordTypeId" : "01276000000CrWY",&#10;	"Description" : "demo description",&#10;	"Status" : "Completed",&#10;	"WhatId" : "0038c00002mfamLAAQ"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\task\create:application\json:doit-salesforce-sapi-config" doc:id="40aff1d1-be4b-4295-8f09-873f9f791f2d" name="post:\task\create:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to create data in salesforce" doc:id="c8993797-6e1a-4a53-9034-5bf5eb4fe17a" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="f7ae8dd8-0af0-4d91-9ae5-7687db037825" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\campaign\create:application\json:doit-salesforce-sapi-configTest" doc:id="7e55a387-f0fb-474f-9c02-01cc9c9597a2" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to create data in salesforce" doc:id="324617b9-eebe-4cdd-a8a5-09dcca7b3367" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d48a681-f234-4fa7-afc4-9b9293d59cb7" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[{&#10;	"ContactId": "0038c00002mfamLAAQ",&#10;	"LeadId": "00Q76000004f3TNEAY",&#10;	"Status": "Planned",&#10;	"CampaignId": "7018c0000016kc4AAA"&#10;}]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="f6cee1a0-de3f-4a16-9f80-383ac6f643c6" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[{&#10;	"ContactId": "0038c00002mfamLAAQ",&#10;	"LeadId": "00Q76000004f3TNEAY",&#10;	"Status": "Planned",&#10;	"CampaignId": "7018c0000016kc4AAA"&#10;}]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\campaign\create:application\json:doit-salesforce-sapi-config" doc:id="473e566b-fab5-4f73-9db3-e4ecf6081246" name="post:\campaign\create:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to create data in salesforce" doc:id="fb05c243-89ea-4be7-908a-71190c17d210" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d48a681-f234-4fa7-afc4-9b9293d59cb7" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\account\update:application\json:doit-salesforce-sapi-configTest" doc:id="a200c59b-4352-45f3-a1c5-c04e7ba05baf" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to update data in salesforce" doc:id="4e47fd8e-72ee-4e9f-87ad-d122a47db8a8" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="9387643b-e5c3-4c84-b4b4-eae5d31f4453" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"Name" : "demo",&#10;	"NumberOfEmployees" : 50,&#10;	"Company_Domain__c" : "demo.com",&#10;	"Id" : "0017600000XtUUlAAN"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="f2026d58-2193-4ffe-999e-cce78ba08da4" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"Name" : "demo",&#10;	"NumberOfEmployees" : 50,&#10;	"Company_Domain__c" : "demo.com",&#10;	"Id" : "0017600000XtUUlAAN"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\account\update:application\json:doit-salesforce-sapi-config" doc:id="bfbefe03-21b3-4647-a5eb-56fe9760d7b4" name="post:\account\update:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to update data in salesforce" doc:id="f09906ad-006e-41fa-a0fe-f647299b0787" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="9387643b-e5c3-4c84-b4b4-eae5d31f4453" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\contact\update:application\json:doit-salesforce-sapi-configTest" doc:id="5076112b-d4e9-4c32-9d75-58d85717773d" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to update data in salesforce" doc:id="12fd643e-b25f-45e3-8eb4-11d5a55defda" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="8ea71c2b-445d-4470-9079-31d8663261f6" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country",&#10;	"Id" : "0038c000034MnzWAAS"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="4015ba01-ed16-4f00-90dd-921b9a23fac0" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country",&#10;	"Id" : "0038c000034MnzWAAS"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\contact\update:application\json:doit-salesforce-sapi-config" doc:id="d306cc33-309b-4552-bd4f-760c8cb2f9dd" name="post:\contact\update:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to update data in salesforce" doc:id="61742d62-e847-4da3-a149-3cf9a54611bd" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="8ea71c2b-445d-4470-9079-31d8663261f6" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\lead\update:application\json:doit-salesforce-sapi-configTest" doc:id="da3cf34d-116b-4375-ad21-8b87f520ff9d" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to update data in salesforce" doc:id="47fec5e9-6bb8-4b7c-b5c0-ea5666a74f6b" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="131a9c46-90a4-4257-987f-0e5687a7abeb" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country",&#10;	"Id" : "00Q76000004f3TNEAY"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="21390a4e-0a65-41fd-a23a-ff403ea1f7ec" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country",&#10;	"Id" : "00Q76000004f3TNEAY"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\lead\update:application\json:doit-salesforce-sapi-config" doc:id="fa089e55-2476-454e-96d2-f1615cc4e3e3" name="post:\lead\update:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to update data in salesforce" doc:id="517e6605-fd91-4082-8ff0-82db6aeae7f1" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="131a9c46-90a4-4257-987f-0e5687a7abeb" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\opportunity\update:application\json:doit-salesforce-sapi-configTest" doc:id="776e5e40-0dfd-446a-96d0-301398461c54" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to update data in salesforce" doc:id="16592a91-7307-442a-8a82-61fa08f5b15b" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="c3705889-abc4-4986-98b8-0d41e0d0cf9d" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country",&#10;	"Id" : "00Q76000004f3TNEAY"&#10;	}&#10;	]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="7846ac98-1352-47ce-bcd4-56bf94f22d99" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[&#10;{&#10;	"LastName" : "demo",&#10;	"FirstName" : "demo",&#10;	"Email" : "demo@gmail.com",&#10;	"Hubspot_Country__c" : "Country",&#10;	"Id" : "00Q76000004f3TNEAY"&#10;	}&#10;	]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\opportunity\update:application\json:doit-salesforce-sapi-config" doc:id="fa476a6f-8df9-44b7-8aea-8fa2521cc8c7" name="post:\opportunity\update:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to update data in salesforce" doc:id="be686fb4-4c76-4316-a819-e60b144731cf" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="c3705889-abc4-4986-98b8-0d41e0d0cf9d" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-post:\campaign\update:application\json:doit-salesforce-sapi-configTest" doc:id="0a469745-6d81-4ea2-ad68-028d26b4a17e" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking Flow Ref to update data in salesforce" doc:id="2347ff5e-0672-4190-9155-092b68b4d7c1" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="34d961b5-024b-4598-8e6a-5b5d54f9c53c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[{&#10;	"ContactId": "0038c00002mfamLAAQ",&#10;	"LeadId": "00Q76000004f3TNEAY",&#10;	"Status": "Planned",&#10;	"CampaignId": "7018c0000016kc4AAA",&#10;	"Id" : "7018c0000016kc4AAA"&#10;}]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="c7a7a20d-5a43-4400-8534-3f479e403622" >
+				<munit:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[{&#10;	"ContactId": "0038c00002mfamLAAQ",&#10;	"LeadId": "00Q76000004f3TNEAY",&#10;	"Status": "Planned",&#10;	"CampaignId": "7018c0000016kc4AAA",&#10;	"Id" : "7018c0000016kc4AAA"&#10;}]]' encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes encoding="UTF-8" mediaType="application/java" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\campaign\update:application\json:doit-salesforce-sapi-config" doc:id="bd68dd76-545a-448a-ac48-9484f1687cc1" name="post:\campaign\update:application\json:doit-salesforce-sapi-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing Flow Ref to update data in salesforce" doc:id="e50df749-dc0d-4866-9c84-719c04c2da7e" processor="flow-ref" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="34d961b5-024b-4598-8e6a-5b5d54f9c53c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="doit-salesforce-sapi-test-suite-doit-salesforce-sapi-mainTest" doc:id="d0d279a8-cdf3-4e25-9dfb-0d1da49c062e" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mocking APIkit Router" doc:id="bcd3ea49-e460-40af-88d1-3e3c627311ee" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;[{&#10;	"ContactId": "0038c00002mfamLAAQ",&#10;	"LeadId": "00Q76000004f3TNEAY",&#10;	"Status": "Planned",&#10;	"CampaignId": "7018c0000016kc4AAA",&#10;	"Id" : "7018c0000016kc4AAA"&#10;}]]' mediaType="application/json" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to doit-salesforce-sapi-main" doc:id="7413916d-95d2-4607-9dff-ab7fc61a2819" name="doit-salesforce-sapi-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verifing APIkit Router" doc:id="c99269b3-91df-421c-a9ba-018e24cbf4c4" processor="apikit:router" atLeast="#[1]" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="doit-salesforce-sapi-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
